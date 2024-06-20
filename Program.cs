@@ -5,6 +5,7 @@ using minimal_api_ef;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<TaskContext>(p => p.UseInMemoryDatabase("TasksDB"));
+builder.Services.AddEntityFrameworkNpgsql();
 
 var app = builder.Build();
 
