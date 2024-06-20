@@ -30,3 +30,6 @@ C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\bin\Debug\net8.0\Micros
 C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\obj\Debug\net8.0\minimal-api-ef.csproj.AssemblyReference.cache
 C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\obj\Debug\net8.0\minimal-api-ef.sourcelink.json
 C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\obj\Debug\net8.0\minimal-.DF6294A4.Up2Date
+C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\bin\Debug\net8.0\Npgsql.dll
+C:\Users\ASUS\Documents\.NET Fundamentals\minimal-api-ef\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
