@@ -33,6 +33,7 @@ public class TaskContext: DbContext
             task.Property(p => p.Description);
             task.Property(p => p.TaskPriority);
             task.Property(p => p.CreationDate);
+            task.Ignore(p => p.Summary);
         });
     }
 }
