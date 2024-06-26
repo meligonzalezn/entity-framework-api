@@ -9,5 +9,6 @@ public class Category
     
     public string Name { get; set; }
     public string Description { get; set; }
+    public int Point { get; set; } 
     public virtual ICollection<Task> Tasks { get; set; }
 }
