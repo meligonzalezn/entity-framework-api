@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using minimal_api_ef;
@@ -11,9 +12,11 @@ using minimal_api_ef;
 namespace minimal_api_ef.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    partial class TaskContextModelSnapshot : ModelSnapshot
+    [Migration("20240626033416_ColumnStatusTask")]
+    partial class ColumnStatusTask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +32,7 @@ namespace minimal_api_ef.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -42,20 +46,6 @@ namespace minimal_api_ef.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = new Guid("f8cbb403-432c-4585-a7d1-850685e65aa8"),
-                            Name = "Pending Activities",
-                            Point = 20
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("f8cbb403-432c-4585-a7d1-850685e65ab6"),
-                            Name = "Personal Activities",
-                            Point = 50
-                        });
                 });
 
             modelBuilder.Entity("minimal_api_ef.Models.Task", b =>
@@ -67,13 +57,18 @@ namespace minimal_api_ef.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("TaskPriority")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TaskStatus")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -86,24 +81,6 @@ namespace minimal_api_ef.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Task", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            TaskId = new Guid("fe2de405-c38e-4c90-ac52-da0540dfb410"),
-                            CategoryId = new Guid("f8cbb403-432c-4585-a7d1-850685e65aa8"),
-                            TaskPriority = 1,
-                            TaskStatus = 0,
-                            Title = "Taxes payment"
-                        },
-                        new
-                        {
-                            TaskId = new Guid("fe2de405-c38e-4c90-ac52-da0540dfb411"),
-                            CategoryId = new Guid("f8cbb403-432c-4585-a7d1-850685e65ab6"),
-                            TaskPriority = 0,
-                            TaskStatus = 1,
-                            Title = "Netflix Payment"
-                        });
                 });
 
             modelBuilder.Entity("minimal_api_ef.Models.Task", b =>

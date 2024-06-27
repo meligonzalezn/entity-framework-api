@@ -9,8 +9,8 @@ public class Task
     public Guid CategoryId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
+    public Status TaskStatus { get; set; }
     public Priority TaskPriority { get; set; }
-    public DateTime CreationDate { get; set; }
     public virtual Category Category { get; set; }
     [NotMapped]
     public string Summary { get; set; }
@@ -21,4 +21,11 @@ public enum Priority
     Low,
     Medium,
     High
+}
+
+public enum Status
+{
+    ToDo,
+    Doing,
+    Done
 }
