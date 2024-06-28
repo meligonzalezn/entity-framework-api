@@ -1,5 +1,4 @@
-﻿/.idea
-/appsettings.json
+﻿appsettings.json
+/.idea
 /Folder.DotSettings.user
 /bin/Debug/net8.0
-appsettings.json
