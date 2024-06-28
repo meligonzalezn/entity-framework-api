@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using minimal_api_ef;
+using Task = minimal_api_ef.Models.Task;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,5 +32,17 @@ app.MapGet("/dbconnection", async ([FromServices] TaskContext dbContext) =>
         return Results.Problem("An error occurred while creating the database.");
     }
 });
+app.MapGet("/api/tasks", async ([FromServices] TaskContext dbContext) =>
+{
+    return Results.Ok(dbContext.Tasks);
+});
+app.MapPost("/api/tasks", async ([FromServices] TaskContext dbContext, [FromBody] Task task)=>
+{
+    task.TaskId = Guid.NewGuid();
+    await dbContext.AddAsync(task);
 
+    await dbContext.SaveChangesAsync();
+
+    return Results.Ok();   
+});
 app.Run();
